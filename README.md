@@ -27,5 +27,7 @@ yarn ladle
 ## TODO
 
 - [x] Add a way to specify the position of the tooltip
+- [] Setup bundling for the library
+- [] Publish to NPM
 - [] Write docs
 - [] Test test test
