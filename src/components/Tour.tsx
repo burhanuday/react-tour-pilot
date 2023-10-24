@@ -10,7 +10,6 @@ export type TourProps = {
 
 export type Step = {
   content: JSX.Element | string;
-  onStep?: (next: () => void) => void;
   xOffset?: number;
   yOffset?: number;
   stepId: string;
@@ -100,9 +99,8 @@ const Tour = ({ onTourEnd, children, steps, onStep }: TourProps) => {
   }, [currentStep, rect]);
 
   useEffect(() => {
-    currentStep.onStep?.(next);
     onStep?.(currentStep.stepId);
-  }, [currentStep, next]);
+  }, [currentStep]);
 
   return (
     <TourContext.Provider value={value}>
@@ -113,7 +111,6 @@ const Tour = ({ onTourEnd, children, steps, onStep }: TourProps) => {
           top: coordinates?.top ?? 0,
           left: coordinates?.left ?? 0,
           zIndex: 10000,
-          border: "1px solid black",
           opacity: rect ? 1 : 0,
         }}
       >
